@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://d204kx6fiyriv"]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_g1rfn"]
+[ext_resource type="Texture2D" uid="uid://c6w7772t1tdo8" path="res://assets/grids/Red/texture_08.png" id="1_rlll8"]
+[ext_resource type="Script" path="res://scripts/ray_cast_spring.gd" id="3_ybrtn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpl4g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqyv6"]
+size = Vector3(4.4, 1.3, 1.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6sdk"]
+albedo_texture = ExtResource("1_rlll8")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_10ypt"]
+size = Vector3(4.4, 1.3, 1.8)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.994882, 0)
+mass = 1500.0
+physics_material_override = SubResource("PhysicsMaterial_kpl4g")
+script = ExtResource("1_g1rfn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xqyv6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_j6sdk")
+mesh = SubResource("BoxMesh_10ypt")
+
+[node name="RayCastRearLeft" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0.8)
+collide_with_areas = true
+script = ExtResource("3_ybrtn")
+
+[node name="RayCastFrontLeft" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0.8)
+script = ExtResource("3_ybrtn")
+
+[node name="RayCastRearRight" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -0.8)
+script = ExtResource("3_ybrtn")
+
+[node name="RayCastFrontRight" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -0.8)
+script = ExtResource("3_ybrtn")
