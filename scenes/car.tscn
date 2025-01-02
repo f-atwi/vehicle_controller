@@ -67,7 +67,7 @@ mesh = SubResource("PlaneMesh_0gguy")
 [node name="Suspension" type="Node3D" parent="."]
 
 [node name="RearRight" type="RayCast3D" parent="Suspension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, -0.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, -0.81)
 target_position = Vector3(0, -0.545, 0)
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
@@ -82,7 +82,7 @@ spring_length = 0.4
 mesh = SubResource("CylinderMesh_refd3")
 
 [node name="FrontRight" type="RayCast3D" parent="Suspension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -0.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -0.81)
 target_position = Vector3(0, -0.545, 0)
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
@@ -97,7 +97,7 @@ spring_length = 0.4
 mesh = SubResource("CylinderMesh_refd3")
 
 [node name="RearLeft" type="RayCast3D" parent="Suspension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0.81)
 target_position = Vector3(0, -0.545, 0)
 collide_with_areas = true
 script = ExtResource("3_ybrtn")
@@ -113,7 +113,7 @@ spring_length = 0.4
 mesh = SubResource("CylinderMesh_refd3")
 
 [node name="FrontLeft" type="RayCast3D" parent="Suspension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0.81)
 target_position = Vector3(0, -0.545, 0)
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
