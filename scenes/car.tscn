@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://d204kx6fiyriv"]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_g1rfn"]
-[ext_resource type="Texture2D" uid="uid://c6w7772t1tdo8" path="res://assets/grids/Red/texture_08.png" id="1_rlll8"]
-[ext_resource type="Texture2D" uid="uid://d13b2glpd6eax" path="res://assets/grids/Light/texture_05.png" id="3_x4ing"]
+[ext_resource type="Texture2D" uid="uid://emmfa7tb024r" path="res://assets/grids/Red/texture_08.png" id="1_rlll8"]
+[ext_resource type="Texture2D" uid="uid://sopxrjrtivad" path="res://assets/grids/Light/texture_05.png" id="3_x4ing"]
 [ext_resource type="Script" path="res://scripts/ray_cast_spring.gd" id="3_ybrtn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpl4g"]
@@ -41,7 +41,6 @@ bottom_radius = 0.3
 height = 0.2
 
 [node name="RigidBody3D" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988907, 0)
 collision_layer = 2
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_kpl4g")
@@ -71,29 +70,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, -0.81)
 target_position = Vector3(0, -0.545, 0)
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
-damping_coefficient = 10000
+damping_coefficient = 1000
 
-[node name="SpringArm3D3" type="SpringArm3D" parent="Suspension/RearRight"]
+[node name="SpringArm3D" type="SpringArm3D" parent="Suspension/RearRight"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_qehu1")
 spring_length = 0.4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/RearRight/SpringArm3D3"]
-mesh = SubResource("CylinderMesh_refd3")
-
-[node name="FrontRight" type="RayCast3D" parent="Suspension"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -0.81)
-target_position = Vector3(0, -0.545, 0)
-script = ExtResource("3_ybrtn")
-wheel_radius = 0.3
-damping_coefficient = 10000
-
-[node name="SpringArm3D4" type="SpringArm3D" parent="Suspension/FrontRight"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_qehu1")
-spring_length = 0.4
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/FrontRight/SpringArm3D4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/RearRight/SpringArm3D"]
 mesh = SubResource("CylinderMesh_refd3")
 
 [node name="RearLeft" type="RayCast3D" parent="Suspension"]
@@ -102,7 +86,7 @@ target_position = Vector3(0, -0.545, 0)
 collide_with_areas = true
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
-damping_coefficient = 10000
+damping_coefficient = 1000
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Suspension/RearLeft"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -112,17 +96,32 @@ spring_length = 0.4
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/RearLeft/SpringArm3D"]
 mesh = SubResource("CylinderMesh_refd3")
 
+[node name="FrontRight" type="RayCast3D" parent="Suspension"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, -0.81)
+target_position = Vector3(0, -0.545, 0)
+script = ExtResource("3_ybrtn")
+wheel_radius = 0.3
+damping_coefficient = 1000
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Suspension/FrontRight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_qehu1")
+spring_length = 0.4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/FrontRight/SpringArm3D"]
+mesh = SubResource("CylinderMesh_refd3")
+
 [node name="FrontLeft" type="RayCast3D" parent="Suspension"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0.81)
 target_position = Vector3(0, -0.545, 0)
 script = ExtResource("3_ybrtn")
 wheel_radius = 0.3
-damping_coefficient = 10000
+damping_coefficient = 1000
 
-[node name="SpringArm3D2" type="SpringArm3D" parent="Suspension/FrontLeft"]
+[node name="SpringArm3D" type="SpringArm3D" parent="Suspension/FrontLeft"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CylinderShape3D_qehu1")
 spring_length = 0.4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/FrontLeft/SpringArm3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Suspension/FrontLeft/SpringArm3D"]
 mesh = SubResource("CylinderMesh_refd3")

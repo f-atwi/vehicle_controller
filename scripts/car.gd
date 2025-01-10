@@ -20,7 +20,7 @@ func apply_force_on_both_wheels(force: Vector3) -> void:
 	apply_force_on_node_position(force, rear_left)
 
 func apply_force_on_node_position(force: Vector3, node: Node3D) -> void:
-	apply_force(force, node.global_position)
+	apply_force(force, node.position)
 
 func get_point_velocity (point :Vector3)->Vector3:
 	return linear_velocity + angular_velocity.cross(point - global_transform.origin)

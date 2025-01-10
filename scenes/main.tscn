@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpam7wcgnww2t"]
 
-[ext_resource type="Texture2D" uid="uid://bdw2j5kejiegc" path="res://assets/grids/Dark/texture_01.png" id="1_efsgm"]
+[ext_resource type="Texture2D" uid="uid://bmsy8wnkplahl" path="res://assets/grids/Dark/texture_01.png" id="1_efsgm"]
 [ext_resource type="PackedScene" uid="uid://d204kx6fiyriv" path="res://scenes/car.tscn" id="2_6djbs"]
 [ext_resource type="Script" path="res://scripts/camera_mount.gd" id="3_ob6pt"]
 
@@ -39,7 +39,7 @@ use_collision = true
 size = Vector3(100, 0.1, 100)
 
 [node name="CameraMount" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("3_ob6pt")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraMount"]
@@ -48,10 +48,10 @@ shape = SubResource("SphereShape3D_q7ac6")
 spring_length = 5.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01492e-07, 0, 4.60959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 
 [node name="Car" parent="." instance=ExtResource("2_6djbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="CameraRemote" type="RemoteTransform3D" parent="Car"]
 remote_path = NodePath("../../CameraMount")
