@@ -14,4 +14,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotation.y += -event.relative.x * mouse_sensitivity
 		rotation.z = clamp(rotation.z - event.relative.y * mouse_sensitivity, 0, PI/2)
-		print(rotation.z - event.relative.y * mouse_sensitivity)

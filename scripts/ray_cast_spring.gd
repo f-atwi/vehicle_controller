@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		var length: float = clamp(get_collision_point().distance_to(global_position) - wheel_radius, 0, spring_length)	
 		var delta_x := spring_natural_length - length
 		var speed = (previous_length - length) / delta
-		rigid_body_3d.apply_force((delta_x*stiffness+speed*damping_coefficient)*transform.basis.y, position)
+		rigid_body_3d.apply_force((delta_x*stiffness+speed*damping_coefficient)*transform.basis.y, global_position - rigid_body_3d.global_position)
 		previous_length = length
 	else:
 		previous_length = spring_length

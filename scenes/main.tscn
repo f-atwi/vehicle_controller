@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cpam7wcgnww2t"]
 
-[ext_resource type="Texture2D" uid="uid://bmsy8wnkplahl" path="res://assets/grids/Dark/texture_01.png" id="1_efsgm"]
+[ext_resource type="Texture2D" uid="uid://cukj7eu01h78" path="res://assets/grids/Dark/texture_01.png" id="1_efsgm"]
 [ext_resource type="PackedScene" uid="uid://d204kx6fiyriv" path="res://scenes/car.tscn" id="2_6djbs"]
 [ext_resource type="Script" path="res://scripts/camera_mount.gd" id="3_ob6pt"]
 
@@ -51,7 +51,8 @@ spring_length = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 
 [node name="Car" parent="." instance=ExtResource("2_6djbs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1, 0)
+inertia = Vector3(150, 150, 150)
 
 [node name="CameraRemote" type="RemoteTransform3D" parent="Car"]
 remote_path = NodePath("../../CameraMount")
