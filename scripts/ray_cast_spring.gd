@@ -4,7 +4,7 @@ extends RayCast3D
 @export var car_frequency: float = 1.5 # Range 1Hz to 2Hz
 @export var x_preload_fraction: float = 0.5 # Range .5 to .75
 @export var spring_natural_length: float = 0.4 # Range .25 to .50
-@export var wheel_radius: float = 0.2 # Range .18m to .25m  
+@export var wheel_radius: float = 0.2 # Range .18m to .25m
 @export var damping_coefficient = 1 # should be studied for its value
 
 var previous_length: float
@@ -23,18 +23,22 @@ func _ready() -> void:
 	previous_length = spring_length
 	target_position.y = -spring_length - wheel_radius # must be adjusted with wheel size
 	spring_arm.spring_length = spring_length
-	# Check that equilibium is less that spring length 
+	# Check that equilibium is less that spring length
 	assert (x_equilibrium < spring_natural_length)
 	assert (x_equilibrium < spring_length)
 
-	
+
 func _physics_process(delta: float) -> void:
 	if is_colliding():
-		var length: float = clamp(get_collision_point().distance_to(global_position) - wheel_radius, 0, spring_length)	
+		var length: float = clamp(get_collision_point().distance_to(global_position) - wheel_radius, 0, spring_length)
 		var delta_x := spring_natural_length - length
 		var speed = (previous_length - length) / delta
-		rigid_body_3d.apply_force((delta_x*stiffness+speed*damping_coefficient)*transform.basis.y, global_position - rigid_body_3d.global_position)
+		var force_direction = rigid_body_3d.global_basis.y
+		var force_magnitude = delta_x*stiffness+speed*damping_coefficient
+		var force = force_magnitude * force_direction
+		# Offset must be in global space for apply_force
+		var offset = global_position - rigid_body_3d.global_position
+		rigid_body_3d.apply_force(force, offset)
 		previous_length = length
 	else:
 		previous_length = spring_length
-		

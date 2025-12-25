@@ -12,7 +12,7 @@ config_version=5
 
 config/name="vehicle_controller"
 run/main_scene="res://scenes/main.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [debug]
@@ -26,6 +26,11 @@ window/size/always_on_top=true
 [dotnet]
 
 project/assembly_name="car_physics"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 
