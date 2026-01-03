@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://d204kx6fiyriv"]
 
-[ext_resource type="Script" path="res://scripts/car.gd" id="1_g1rfn"]
+[ext_resource type="Script" uid="uid://qcqposnitur7" path="res://scripts/car.gd" id="1_g1rfn"]
 [ext_resource type="Texture2D" uid="uid://bhdxibccytooy" path="res://assets/grids/Red/texture_08.png" id="1_rlll8"]
 [ext_resource type="Texture2D" uid="uid://34kasq41wg61" path="res://assets/grids/Light/texture_05.png" id="3_x4ing"]
-[ext_resource type="Script" path="res://scripts/ray_cast_spring.gd" id="3_ybrtn"]
+[ext_resource type="Script" uid="uid://d2kerurqgb68k" path="res://scripts/ray_cast_spring.gd" id="3_ybrtn"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpl4g"]
 

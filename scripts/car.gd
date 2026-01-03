@@ -20,8 +20,9 @@ func _physics_process(delta: float) -> void:
 		apply_force_on_both_wheels(force)
 
 func apply_force_on_both_wheels(force: Vector3) -> void:
-	apply_force_on_node_position(force, rear_right)
-	apply_force_on_node_position(force, rear_left)
+	apply_force_on_wheel(force, rear_right)
+	apply_force_on_wheel(force, rear_left)
 
-func apply_force_on_node_position(force: Vector3, node: Node3D) -> void:
-	apply_force(force, node.global_position - global_position)
+func apply_force_on_wheel(force: Vector3, node: Node3D) -> void:
+	if node.is_in_contact:
+		apply_force(force, node.contact_position - global_position)

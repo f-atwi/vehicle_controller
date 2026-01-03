@@ -13,6 +13,9 @@ var x_equilibrium: float
 var x_preloaded: float
 var spring_length: float
 
+var is_in_contact: bool
+var contact_position: Vector3
+
 @onready var rigid_body_3d: RigidBody3D = $"../.."
 @onready var spring_arm: SpringArm3D = $SpringArm3D
 
@@ -30,7 +33,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if is_colliding():
-		var length: float = clamp(get_collision_point().distance_to(global_position) - wheel_radius, 0, spring_length)
+		is_in_contact = true
+		contact_position = get_collision_point()
+		var length: float = clamp(contact_position.distance_to(global_position) - wheel_radius, 0, spring_length)
 		var delta_x := spring_natural_length - length
 		var speed = (previous_length - length) / delta
 		var force_direction = rigid_body_3d.global_basis.y
@@ -40,5 +45,7 @@ func _physics_process(delta: float) -> void:
 		var offset = global_position - rigid_body_3d.global_position
 		rigid_body_3d.apply_force(force, offset)
 		previous_length = length
+
 	else:
+		is_in_contact = false
 		previous_length = spring_length

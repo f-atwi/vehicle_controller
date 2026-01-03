@@ -52,7 +52,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.5)
 
 [node name="Car" parent="." instance=ExtResource("2_6djbs")]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1, 0)
-inertia = Vector3(150, 150, 150)
 
 [node name="CameraRemote" type="RemoteTransform3D" parent="Car"]
 remote_path = NodePath("../../CameraMount")
